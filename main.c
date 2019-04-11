@@ -1,8 +1,8 @@
 #include <stdio.h>
-
+/*
 void encrotciph(char n[], char enc[], int u, int k);
 void decrotciph(char enc[], int u, int k);
-void encsubciph(char m[], int j, int kc);
+//void encsubciph(char m[], int j, int kc);
 void decsubciph();
 void decencrotciph();
 void decencsubciph();
@@ -12,13 +12,19 @@ void encrotciph(char n[], char enc[], int u, int k){
         if(n[g] == ' '){
            enc[g] = ' ';
            continue;
+        //need an if statement for getting the array to stop at the final number 
+        }
         } 
         else if(n[g] == '\0') break;
-        n[g] = n[g] - 65;//takes the letter into ASCII code numbers
-        enc[g] = (k + n[g])%(26);//uses the key encrypte accounting for negative numbers 
+        if(n[g] < 90){
+            enc[g] = n[g] - 32;
+            continue;
+        }
+        n[g] = n[g] - 65;//takes the letter in array g into ASCII code numbers
+        enc[g] = (k + n[g])%(26);//uses the key encrypte 
         enc[g] = enc[g] + 65;//takes the numbers and turns them back into letters 
     } 
-     printf("%s\n", enc);//prints the ecnryptionhfh 
+     printf("%s\n", enc);//prints the ecnryption
 }
 
 void decrotciph(char enc[], int u, int k){
@@ -31,17 +37,17 @@ void decrotciph(char enc[], int u, int k){
      }
      printf("%s\n", enc);
 }
-
+*/
 int main(){
-    int k = 1, kc = ;
-    int u, j;
+    int k = 1;
+    int u, j, q, xn, yn;
     char selec;
     char str[] = "ATTACK AT SUNRISE";
     char sti[] = "PLEASE GET MILK AT THE SHOPS";
     u = sizeof(str)/sizeof(str[0]);
     j = sizeof(sti)/sizeof(sti[0]);
     char ex[u];
-    char ex[j];
+    char alph[xn], char sub[yn];
     printf("%d\n", u); //shows the size of the array 
     printf("%d\n", j);
     printf("Please select and option: \n");
@@ -53,12 +59,12 @@ int main(){
     printf("f) Decrypt a message ecrypted with substitution cipher \n");
     printf("Selection: \n");
     scanf(" %c", &selec); 
-    switch(selec) {
-        case 'a': encrotciph(str, ex, u, k);
+ switch(selec) {
+ /*      case 'a': encrotciph(str, ex, u, k);
         //break;
         case 'b': decrotciph(ex, u, k);
         break;
- /*       case 'c': encsubciph();
+        case 'c': encsubciph();
         break;
         case 'd': decsubciph();
         break;
@@ -67,17 +73,23 @@ int main(){
         case 'f': decencsubciph();*/
         default: printf("Unknown option %c\n Please enter a, b, c, d, e, f\n", selec);
     } 
-     for(int m = 0; m < j; m++){
+    for(int m = 0; m < j; m++){
          if(q[m] == ' '){
              emc[m] = ' ';
              continue;
          } 
          else if (q[m] =='\0') break;
-         q[m] = q[m] - 65;//takes the letter into ASCII code numbers
-         emc[m] = //enter the substitution cipher key 
-         //calcaulate the numerals back into letters 
-         //iflower is a function to check if it lower and -32 off of that number
-         
-     }
+         int xn, yn;
+         xn = ABCDEFGHIJKLMNOPQRSTUVWXYZ
+         xn = xn - 65;
+         yn = QWERTYUIOPASDFGHJKLZXCVBNM;
+         yn = yn - 65;
+         }
+         q[m] = q[m] - 65;
+         sub[yn] = alph[xn];
+         emc[m] = alph[xn];
+ }
+    printf("%s\n", emc);
+
      return 0;
 }
