@@ -1,5 +1,5 @@
 #include <stdio.h>
-/*
+
 void encrotciph(char n[], char enc[], int u, int k);
 void decrotciph(char enc[], int u, int k);
 //void encsubciph(char m[], int j, int kc);
@@ -15,10 +15,10 @@ void encrotciph(char n[], char enc[], int u, int k){
         //need an if statement for getting the array to stop at the final number 
         }
         } 
-        else if(n[g] == '\0') break;
+  /*      else if(n[g] == '\0') break;
         if(n[g] < 90){
             enc[g] = n[g] - 32;
-            continue;
+            continue;   */
         }
         n[g] = n[g] - 65;//takes the letter in array g into ASCII code numbers
         enc[g] = (k + n[g])%(26);//uses the key encrypte 
@@ -37,7 +37,7 @@ void decrotciph(char enc[], int u, int k){
      }
      printf("%s\n", enc);
 }
-*/
+
 int main(){
     int k = 1;
     int u, j, q, xn, yn;
@@ -60,11 +60,11 @@ int main(){
     printf("Selection: \n");
     scanf(" %c", &selec); 
  switch(selec) {
- /*      case 'a': encrotciph(str, ex, u, k);
+        case 'a': encrotciph(str, ex, u, k);
         //break;
         case 'b': decrotciph(ex, u, k);
         break;
-        case 'c': encsubciph();
+/*        case 'c': encsubciph();
         break;
         case 'd': decsubciph();
         break;
