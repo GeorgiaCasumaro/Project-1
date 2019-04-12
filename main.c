@@ -45,7 +45,7 @@ int main(){
     int k = 1;  
     char selec='c';
     int u;
-    char str[] = "PLEASE PLEASE HELP ME";
+    char str[] = "QWERTYUIOPASDFGHJKLZXCVBNM";
     u = sizeof(str)/sizeof(char);
     char alph[] = "QWERTYUIOPASDFGHJKLZXCVBNM";
     printf("%d\n", u); //shows the size of the array 
@@ -80,71 +80,17 @@ int main(){
     int j,f;
     for(int i = 0; i < u; i++){
         if(isupper(str[i])){
-        
-        j = str[i] - 65;
-        alph[f] = j;
-        str[i] = j + 65;              
+            for(int m=0; m<26; m++){
+                
+            }
+        j = str[i];
+        f = alph[j-65];
+        str[i] = f;
     }
+  }
+  
   printf("%s\n", str);
     
-
-}
      return 0;
 }
 
-
-int main(){
-    int k = 1;
-    int u, j, q, xn, yn;
-    char selec;
-    char str[] = "ATTACK AT SUNRISE";
-    char sti[] = "PLEASE GET MILK AT THE SHOPS";
-    u = sizeof(str)/sizeof(str[0]);
-    j = sizeof(sti)/sizeof(sti[0]);
-    char ex[u];
-    char alph[xn], char sub[yn];
-    printf("%d\n", u); //shows the size of the array 
-    printf("%d\n", j);
-    printf("Please select and option: \n");
-    printf("a) Encrypt a rotation cipher \n");
-    printf("b) Decrypt a rotation cipher \n");
-    printf("c) Encrypt a substitution cipher \n");
-    printf("d) Decrypt a substitution cipher \n");
-    printf("e) Decrypt a message encrypted with rotation cipher \n");
-    printf("f) Decrypt a message ecrypted with substitution cipher \n");
-    printf("Selection: \n");
-    scanf(" %c", &selec); 
- switch(selec) {
-        case 'a': encrotciph(str, ex, u, k);
-        //break;
-        case 'b': decrotciph(ex, u, k);
-        break;
-/*        case 'c': encsubciph();
-        break;
-        case 'd': decsubciph();
-        break;
-        case 'e': decencrotciph();
-        break;
-        case 'f': decencsubciph();*/
-        default: printf("Unknown option %c\n Please enter a, b, c, d, e, f\n", selec);
-    } 
-    for(int m = 0; m < j; m++){
-         if(q[m] == ' '){
-             emc[m] = ' ';
-             continue;
-         } 
-         else if (q[m] =='\0') break;
-         int xn, yn;
-         xn = ABCDEFGHIJKLMNOPQRSTUVWXYZ
-         xn = xn - 65;
-         yn = QWERTYUIOPASDFGHJKLZXCVBNM;
-         yn = yn - 65;
-         }
-         q[m] = q[m] - 65;
-         sub[yn] = alph[xn];
-         emc[m] = alph[xn];
- }
-    printf("%s\n", emc);
-
-     return 0;
-}
