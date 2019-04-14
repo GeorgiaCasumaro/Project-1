@@ -77,15 +77,14 @@ int main(){
         default: printf("Unknown option %c\n Please enter a, b, c, d, e, f\n", selec);
     } 
     
-    int j,f;
+    int a, b;
     for(int i = 0; i < u; i++){
         if(isupper(str[i])){
-            for(int m=0; m<26; m++){
-                
-            }
-        j = str[i];
-        f = alph[j-65];
-        str[i] = f;
+            a = str[i];
+            b = 0;
+            while(a != alph[b])
+            b++;
+            str[i] = b + 65;
     }
   }
   
