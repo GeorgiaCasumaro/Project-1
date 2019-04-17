@@ -1,10 +1,10 @@
 #include <stdio.h>
-#include <ctype.h>
+#include <ctype.h> //this header file has been included to use the pre determined function "isupper", to check if the letter is upper case
 
 void encrotciph(char str[], int u, int k);
 void decrotciph(char str[], int u, int k);
 void encsubciph(char str[], int u, char alph[]);
-void decsubciph();
+void decsubciph(char str[], int u, char alph[]);
 void decencrotciph();
 void decencsubciph();
 
@@ -38,12 +38,24 @@ void encsubciph(char str[], int u, char alph[]){
 }
     printf("%s\n", str);
 }
-
-
-    
+void decsubciph(char str[], int u, char alph[]){
+    int a, b;
+    for(int i = 0; i < u; i++){
+        if(isupper(str[i])){
+            a = str[i];
+            b = 0;
+            while(a != alph[b])
+            b++;
+            str[i] = b + 65;
+    }
+  }
+  
+  printf("%s\n", str);
+  
+}
 int main(){
     int k = 1;  
-    char selec='c';
+    char selec='d';
     int u;
     char str[] = "QWERTYUIOPASDFGHJKLZXCVBNM";
     u = sizeof(str)/sizeof(char);
@@ -69,27 +81,13 @@ int main(){
         case 'c': 
         encsubciph(str, u, alph);
         break;
- /*       case 'd': decsubciph();
+        case 'd': decsubciph(str, u, alph);
         break;
-        case 'e': decencrotciph();
+ /*       case 'e': decencrotciph();
         break;
         case 'f': decencsubciph();*/
         default: printf("Unknown option %c\n Please enter a, b, c, d, e, f\n", selec);
     } 
-    
-    int a, b;
-    for(int i = 0; i < u; i++){
-        if(isupper(str[i])){
-            a = str[i];
-            b = 0;
-            while(a != alph[b])
-            b++;
-            str[i] = b + 65;
-    }
-  }
-  
-  printf("%s\n", str);
-    
+      
      return 0;
 }
-
