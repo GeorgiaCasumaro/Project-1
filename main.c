@@ -5,7 +5,8 @@ void encrotciph(char str[], int u, int k);
 void decrotciph(char str[], int u, int k);
 void encsubciph(char str[], int u, char alph[]);
 void decsubciph(char str[], int u, char alph[]);
-
+void decencrotciph(char str[], int u);
+void decencsubciph();
 
 void encrotciph(char str[], int u, int k){
     for (int i = 0; i < u; i++){
@@ -15,19 +16,32 @@ void encrotciph(char str[], int u, int k){
             str[i] = str[i] + 65;//takes the numbers and turns them back into letters  
         }       
     } 
-     printf("\n\n%s", str);//prints the ecnryption
+     printf("\n\n%s", str);//prints the encryption
 }
-for(int k = 1; 1<k>25; k++){ //accounts for when thekey needs to be calculated 
+void decencrotciph(char str[], int u){
+   int w = 1;
+      while( w<=25)
+      for(int i = 0; i < u; i++){
+        if(isupper(str[i])){
+            str[i] = 26 + str[i] - 65;
+            str[i] = (str[i] - w) % 26;
+            str[i] = str[i] + 65;
+            w++;     
+        }
+      }
+
+        printf("%s\n",str);
+}
+
 void decrotciph(char str[], int u, int k){
     for(int i = 0; i < u; i++){
          if(isupper(str[i])){
-         str[i] = 26 + str[i] - 65;
-         str[i] = (str[i] - k) % 26;
-         str[i] = str[i] + 65;
+            str[i] = 26 + str[i] - 65;
+            str[i] = (str[i] - k) % 26;
+            str[i] = str[i] + 65;
     }              
-        }
+         }
      printf("%s\n", str);
-}
 }
 void encsubciph(char str[], int u, char alph[]){
     int f;
@@ -79,9 +93,15 @@ int main(){
         encsubciph(str, u, alph);
         break;
         case 'd': decsubciph(str, u, alph);
+/*       case 'e': decencrotciph();
+        break;
+        case 'f': decencsubciph();*/
         break;
         default: printf("Unknown option %c\n Please enter a, b, c, d, e, f\n", selec);
     } 
-      
      return 0;
+     
+//FILE *fopen(const char *input, const char *r+); //fopens prototype
+
+
 }
