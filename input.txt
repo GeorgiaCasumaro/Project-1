@@ -1,1 +1,9 @@
+Statement selections:
+a) Encryption with a rotation cipher and a key (key ranging from 0 - 26)
+b) Decryption with a rotation cipher and a key (key ranging from 0-26)
+c) Unseen text decryption without the use of a key (all possible keys)
+d) Encryption with a substitution cipher and a key (key containing 26 letters of the alphabet)
+e) Decryption with a substitution cipher and a key (key containing 26 letters of the alphabet)
 
+Selection: e
+Key: QWERTYUIOPASDFGHJKLZXCVBNM
