@@ -6,4 +6,10 @@ d) Encryption with a substitution cipher and a key (key containing 26 letters of
 e) Decryption with a substitution cipher and a key (key containing 26 letters of the alphabet)
 
 Selection: e
-Key: QWERTYUIOPASDFGHJKLZXCVBNM
+Key: qwertyuiopasdfghjklzxcvbnm
+
+
+Note:
+- When entering a selection and a key always leave a blank space between the colon and the key and/or the selection 
+- Always enter the selection letter in lower case 
+- Enter the key only with capital letters
