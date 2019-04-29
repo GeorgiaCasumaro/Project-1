@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <ctype.h> //this header file has been included to use the pre determined function "isupper", to check if the letter is upper case
-/*these are function prototypes, void is stated as they do not provide a return value*/
+/*These are function prototypes, void is stated as they do not provide a return value*/
 void encrotciph(char str[], int u, int k, FILE *output);
 void decrotciph(char str[], int u, int k, FILE *output);
 void encsubciph(char str[], int u, char alph[], FILE *output);
@@ -12,8 +12,8 @@ void decencrotciph(char str[], int u, FILE *output);
 This is done by adding a predetermined key to the provided message, to change the values of the ASCII numbers*/ 
 
 void encrotciph(char str[], int u, int k, FILE *output){ 
-    for (int i = 0; i < u; i++){ // this for loop uses i as a counter to increase throughout the size of the array u
-        if (isupper(str[i])){ // isupper checks if the letter is upper case then continue through the loop
+    for (int i = 0; i < u; i++){ //this for loop uses i as a counter to increase throughout the size of the array u
+        if (isupper(str[i])){ //isupper checks if the letter is upper case then continue through the loop
             str[i] = str[i] - 65; //takes the letters in the array and converts to ASCII code numbers
             str[i] = (k + str[i]) % 26; //uses the key encrypt
             str[i] = str[i] + 65; //takes the numbers and turns them back into letters  
@@ -28,11 +28,11 @@ The message is than ran through a for loop to test each possible key and printed
 
 void decencrotciph(char str[], int u, FILE *output){
    int w = 0; //introduces a new counter for all the possible keys
-      while( w<=25){ //all thr possible keys
-      for(int i = 0; i < u; i++){ // this for loop uses i as a counter to increase throughout the size of the array u
-        if(isupper(str[i])){ // isupper checks if the letter is upper case then continue through the loop
+      while( w<=25){ //all the possible keys from 0 - 25
+      for(int i = 0; i < u; i++){ //this for loop uses i as a counter to increase throughout the size of the array u
+        if(isupper(str[i])){ //isupper checks if the letter is upper case then continue through the loop
             str[i] = 26 + str[i] - 65; //takes the letters in the array and converts to ASCII code numbers with the addition of 26
-            str[i] = (str[i] - 1) % 26; //uses the str converted in line 31 to decrypt
+            str[i] = (str[i] - 1) % 26; //uses the str converted in line 34 to decrypt
             str[i] = str[i] + 65; //takes the ASCII numbers and turns them back into letters       
         } 
       }
@@ -41,12 +41,13 @@ void decencrotciph(char str[], int u, FILE *output){
       fprintf(output, "Key is %d. message %s\n\n", w, str); //prints to the output file
       }
 }
+
 /*This function decrypts through the use of a key.
 This is simply done by subtracting the initial key off of the encrypted message and then printed*/
 
 void decrotciph(char str[], int u, int k, FILE *output){
-    for(int i = 0; i < u; i++){ // this for loop uses i as a counter to increase throughout the size of the array u
-         if(isupper(str[i])){ // isupper checks if the letter is upper case then continue through the loop
+    for(int i = 0; i < u; i++){ //this for loop uses i as a counter to increase throughout the size of the array u
+         if(isupper(str[i])){ //isupper checks if the letter is upper case then continue through the loop
             str[i] = 26 + str[i] - 65; //turns the encrypted message letters into ASCII and adds 26 other wise will not decrypt
             str[i] = (str[i] - k) % 26; //subtracts the key to decrypt the message from the new str[i] value
             str[i] = str[i] + 65; //takes the ASCII numbers and turns them back into letters 
@@ -62,8 +63,8 @@ A declaration of another integer f has been done as the as the intial string of 
 
 void encsubciph(char str[], int u, char alph[], FILE *output){
     int f;
-    for(int i = 0; i < u; i++){ // this for loop uses i as a counter to increase throughout the size of the array u
-         if(isupper(str[i])){ // isupper checks if the letter is upper case then continue through the loop
+    for(int i = 0; i < u; i++){ //this for loop uses i as a counter to increase throughout the size of the array u
+         if(isupper(str[i])){ //isupper checks if the letter is upper case then continue through the loop
              f = str[i] - 65; //f is now equal to str[i] ASCIIcode number
              str[i] = alph[f]; //these ASCII code numbers now equal to alph[f]
     }
@@ -75,10 +76,11 @@ void encsubciph(char str[], int u, char alph[], FILE *output){
 /*This function decrypts the encrypted message through substitution cipher.
 This is completed through the addition if two new variables a and b. 
 B is used as a counter to move across the message decrypt each letter through use of the key.*/
+
 void decsubciph(char str[], int u, char alph[], FILE *output){
     int a, b;
-    for(int i = 0; i < u; i++){ // this for loop uses i as a counter to increase throughout the size of the array u
-        if(isupper(str[i])){ // isupper checks if the letter is upper case then continue through the loop
+    for(int i = 0; i < u; i++){ //this for loop uses i as a counter to increase throughout the size of the array u
+        if(isupper(str[i])){ //isupper checks if the letter is upper case then continue through the loop
             a = str[i]; 
             b = 0; //counter b
             while(a != alph[b]) //while str is not equal to alph of b continue to decrypt
@@ -104,18 +106,10 @@ int main(){
          return 0;   
     }
     
-    /*int size=0; 
-    char c;
-    while((fscanf(input, "%c", &c)) !=EOF){
-        size++; 
-    }
-    
-    printf("\n\n%d\n\n", size); */
-   
-    fseek(input, 446, SEEK_SET);
+    fseek(input, 446, SEEK_SET); //fseek moves the file pointer position to the input file and SEEK_SET moves file pointer position to the beginning of the input file after the 446 characters before the input is needed 
     char selec;
-    fscanf(input, "%c", &selec);
-    fseek(input, 453, SEEK_SET);
+    fscanf(input, "%c", &selec); //scans selec into the input file
+    fseek(input, 453, SEEK_SET); //fseek moves the file pointer position to the input file and SEEK_SET moves file pointer position to the beginning of the input file after the 453 characters before the input is needed
     if(selec == 97 || selec == 98){ //if option a(ASCII value of 97) or b(ASCII value of 98) are selected 
         fscanf(input, "%d", &k); //reads from file
     }
@@ -133,12 +127,12 @@ int main(){
     }
     char str[1024]; //allocates str to a large value of 1024 suitable for large messages 
     u = sizeof(str)/sizeof(char); //determines the size of u, used throughout the functions
-    for(int i=0; i<u; i++){ // this for loop uses i as a counter to increase throughout the size of the array u
+    for(int i=0; i<u; i++){ //this for loop uses i as a counter to increase throughout the size of the array u
         char g; 
         fscanf(message, "%c", &g); //scans char g into the message file
         if(feof(message)==0){ 
             if(islower(g)){ 
-                g-=32; // change to upper case 
+                g-=32; //change to upper case letters
             } 
             str[i] = g;
         }
