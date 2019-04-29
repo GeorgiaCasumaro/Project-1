@@ -92,8 +92,8 @@ void decsubciph(char str[], int u, char alph[], FILE *output){
   fprintf(output, "%s\n", str); //prints decryption to the output file 
 }
 int main(){
-    int k; 
-    int u; 
+    int k; //initialising k used as a key 
+    int u; //initialising u as a counter 
     char alph[26]; //alph is the size of the alphabet, 26
     
     FILE *input; //introduces the input file 
